@@ -1,0 +1,24 @@
+.products{
+    display: flex;
+    /* justify-content: space-between;
+    align-content: center; */
+
+
+}
+
+.left_filter{
+    width: 20%;
+    background-color: red;
+    height: 100vh;
+}
+
+.rightProduct{
+    width: 80%;
+    background-color: blue;
+}
+
+
+
+.productImg{
+    width: 12%;
+}
