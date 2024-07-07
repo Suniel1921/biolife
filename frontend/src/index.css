@@ -8,10 +8,11 @@
 }
 
 :root{
-    --primaryGreenColor: '#3dc547';
-    --secondaryBlueColor: '#3d82c5';
-    --whiteColor: '#fff';
-    --darkWhiteColor: '';
+    --primaryGreenColor: #3dc547;
+    --secondaryBlueColor: #3d82c5;
+    --whiteColor: #fff;
+    --darkTextColor: #848484;
+    --blackTextColor : #000000;
 }
 
 .container{
@@ -19,7 +20,16 @@
     margin: auto;
         
 }
+
+.link {
+    list-style-type: none;
+    text-decoration: none;
+}
+
+
 /* .active{
     color: red;
 } */
+
+
 

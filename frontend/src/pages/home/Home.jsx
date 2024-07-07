@@ -1,15 +1,19 @@
 import React from 'react';
 import '../home/home.css';
+import HomeSlider from './HomeSlider';
+import DealOfTheDay from '../../components/deal_of_the_Day/DealOfTheDay';
 
 const Home = () => {
   return (
     <>
     <div className="homeContainer">
-        <div className="container">
             <div className="home">
-                <h3>welcome to home page of biolife</h3>
+              <HomeSlider/>
             </div>
-        </div>
+
+            <div className="container">
+            <DealOfTheDay/>
+            </div>
     </div>
       
     </>
@@ -17,3 +21,6 @@ const Home = () => {
 }
 
 export default Home
+
+
+

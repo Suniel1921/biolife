@@ -1,0 +1,13 @@
+.productDetails{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+}
+
+.productDetailsMainImg{
+    width: 23%;
+}
+
+.childimg img{
+    width: 8%;
+}
