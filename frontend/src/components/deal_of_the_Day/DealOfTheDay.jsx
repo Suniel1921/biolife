@@ -39,6 +39,8 @@ const DealOfTheDay = () => {
     };
 
     return (
+       <>
+        <div className="container">
         <div className="deal-of-the-day">
             <div className="deal-info">
                 <div className="deal-text">
@@ -91,6 +93,8 @@ const DealOfTheDay = () => {
                 </div>
             </div>
         </div>
+        </div>
+       </>
     );
 };
 

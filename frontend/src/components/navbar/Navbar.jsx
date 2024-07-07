@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import '../navbar/navbar.css'
 
 const Navbar = () => {
@@ -9,7 +9,7 @@ const Navbar = () => {
         <div className="container">
           <div className="navbar">
             <div className="logo">
-              <img className='logoImg' src="/images/bio_life_Logo.png" alt="Bio Life Logo" />
+             <Link to={'/'}><img className='logoImg' src="/images/bio_life_Logo.png" alt="Bio Life Logo" /></Link>
             </div>
             <ul className='navlinks'>
               <li><NavLink to="/">Home</NavLink></li>

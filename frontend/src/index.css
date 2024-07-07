@@ -8,16 +8,20 @@
 }
 
 :root{
+    --sliderBGColor: #20273b;
     --primaryGreenColor: #3dc547;
     --secondaryBlueColor: #3d82c5;
     --whiteColor: #fff;
     --darkTextColor: #848484;
+    --grayDarkColor: #e0e0e0;
     --blackTextColor : #000000;
+    --redTextColor: #f14532;
 }
 
 .container{
     max-width: 1350px;
     margin: auto;
+    overflow: hidden;
         
 }
 

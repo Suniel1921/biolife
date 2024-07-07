@@ -1,0 +1,17 @@
+.sellerHeading{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.categoryContainer{
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.heading{
+    font-size: 2rem;
+}
