@@ -4,21 +4,21 @@ const categoryModel = require("../models/categoryModel");
 //create Category
 exports.createCategory = async (req, res) => {
     try {
-        const { name } = req.body;
+        const { categoryName } = req.body;
 
         // Validation
-        if (!name) {
+        if (!categoryName) {
             return res.status(400).json({ success: false, message: 'Name is required' });
         }
 
         // Check if category name exists or not
-        const checkName = await categoryModel.findOne({ name });
+        const checkName = await categoryModel.findOne({ categoryName });
         if (checkName) {
             return res.status(400).json({ success: false, message: 'Category name already exists' });
         }
 
         // Save/create new category name in db
-        const newCategoryName = await categoryModel.create({ name });
+        const newCategoryName = await categoryModel.create({ categoryName });
         return res.status(201).json({ success: true, message: 'Category Created Successfully', newCategoryName });
         
     } catch (error) {

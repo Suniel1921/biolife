@@ -5,6 +5,7 @@ import Home from './pages/home/Home'
 import Products from './pages/products/Products'
 import Contact from './pages/contact/Contact'
 import ProductDetails from './pages/products/ProductDetails'
+import { Toaster } from 'react-hot-toast';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path='/products-details/:id' element={<ProductDetails/>}/>
 
       </Routes>
+      <Toaster/>
     </Router>
 
       

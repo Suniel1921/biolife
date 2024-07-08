@@ -1,260 +1,57 @@
-// import React, { useState } from 'react';
-// import '../products/product.css';
-// import { useParams } from 'react-router-dom';
-
-// const Products = () => {
-//   const products = [
-//     {
-//       id: 1,
-//       name: 'Ionizer',
-//       heading: 'Best ionizer in market',
-//       realPrice: 3000,
-//       salePrice: 1000,
-//       brand: 'cg',
-//       category: 'alkalineWater',
-//       photo: '/images/1.png',
-//       ratingImg: '/images/rating.png',
-//     },
-//     {
-//       id: 2,
-//       name: 'Ionizer',
-//       heading: 'Best ionizer in market',
-//       realPrice: 1043,
-//       salePrice: 8333,
-//       brand: 'himstar',
-//       category: 'alkalineFilter',
-//       photo: '/images/312.png',
-//       ratingImg: '/images/rating.png',
-//     },
-//     {
-//       id: 3,
-//       name: 'Laptop',
-//       heading: 'Best ionizer in market',
-//       realPrice: 5043,
-//       salePrice: 933,
-//       brand: 'euroguard',
-//       category: 'ionizer',
-//       photo: '/images/12312.png',
-//       ratingImg: '/images/rating.png',
-//     },
-//     {
-//       id: 4,
-//       name: 'Desktop',
-//       heading: 'Best ionizer in market',
-//       realPrice: 1943,
-//       salePrice: 9333,
-//       brand: 'euroguard',
-//       category: 'airpurifier',
-//       photo: '/images/1.png',
-//       ratingImg: '/images/rating.png',
-//     },
-//     {
-//       id: 5,
-//       name: 'Phone',
-//       heading: 'Best ionizer in market',
-//       realPrice: 8943,
-//       salePrice: 5033,
-//       brand: 'euroguard',
-//       category: 'airpurifier',
-//       photo: '/images/1.png',
-//       ratingImg: '/images/rating.png',
-//     },
-//   ];
-
-//   const [productBrand, setProductBrand] = useState('');
-//   const [productCategory, setProductCategory] = useState('');
-//   const [productPriceRange, setProductPriceRange] = useState(10000);
-//   const [productSort, setProductSort] = useState('');
-//   const productId = useParams();
-//   console.log(productId)
-
-//   // Filter data based on brand, category, and price range
-//   const filterData = products.filter((fData) => (
-//     (productBrand === '' || fData.brand.toLowerCase() === productBrand.toLowerCase()) &&
-//     (productCategory === '' || fData.category.toLowerCase() === productCategory.toLowerCase()) &&
-//     (fData.salePrice <= productPriceRange)
-//   )).sort((a, b) => {
-//     if (productSort === 'lth') {
-//       return a.salePrice - b.salePrice;
-//     }
-//     if (productSort === 'htl') {
-//       return b.salePrice - a.salePrice;
-//     }
-//     return 0;
-//   });
-
-//   return (
-//     <>
-//       <div className="productContainer">
-//         <div className="container">
-//           <div className="products">
-//             <aside className='left_filter'>
-//               <div className="filterSection">
-//                 <div className="brandFilterSection">
-//                   <select value={productBrand} onChange={(e) => setProductBrand(e.target.value)}>
-//                     <option value="">All Brand</option>
-//                     <option value="cg">CG</option>
-//                     <option value="himstar">Himstar</option>
-//                     <option value="euroguard">Euroguard</option>
-//                     <option value="kent">Kent</option>
-//                   </select>
-//                 </div>
-
-//                 <div className="categoryFilterSection">
-//                   <select value={productCategory} onChange={(e) => setProductCategory(e.target.value)}>
-//                     <option value="">All</option>
-//                     <option value="ionizer">Ionizer</option>
-//                     <option value="airpurifier">Air Purifier</option>
-//                     <option value="alkalineWater">Alkaline Water</option>
-//                     <option value="alkalineFilter">Alkaline Filter</option>
-//                   </select>
-//                 </div>
-
-//                 <div className="priceRangeFilterSection">
-//                   <label>Price Range: {productPriceRange}</label>
-//                   <input 
-//                     type="range" 
-//                     min="1000" 
-//                     max="10000" 
-//                     step="100" 
-//                     value={productPriceRange} 
-//                     onChange={(e) => setProductPriceRange(e.target.value)} 
-//                   />
-//                 </div>
-
-//                 <div className="sortFilterSection">
-//                   <select value={productSort} onChange={(e) => setProductSort(e.target.value)}>
-//                     <option value="">Default</option>
-//                     <option value="htl">High to Low Price</option>
-//                     <option value="lth">Low to High Price</option>
-//                   </select>
-//                 </div>
-//               </div>
-//             </aside>
-
-//             <main className='rightProduct'>
-//               <h3>Products</h3>
-//               <div className="allProducts">
-//                 {
-//                   filterData.length > 0 ? (
-//                     filterData.map((product) => (
-//                       <div className='productChildContainer' key={product.id}>
-//                         <img className='productImg' src={product.photo} alt={product.name} />
-//                         <p className='productName'>{product.name}</p>
-//                         <p className='productHeading'>{product.heading}</p>
-//                         <div className="priceContainer">
-//                           <h4 className='salePrice'>Rs {product.salePrice}</h4>
-//                           <h4 className='realPrice'>Rs {product.realPrice}</h4>
-//                         </div>
-//                         <img className='ratingImg' src={product.ratingImg} alt="" />
-//                         <h4 className='productBrand'>{product.brand}</h4>
-//                       </div>
-//                     ))
-//                   ) : (
-//                     <h2>Oops! No products found for the selected brand, category, and price range.</h2>
-//                   )
-//                 }
-//               </div>
-//             </main>
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default Products;
-
-
-
-
-
-
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link for navigation
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../products/product.css';
-import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import toast from 'react-hot-toast';
+import CardSkeleton from '../../components/cardSkeleton/CardSkeleton';
+
 
 const Products = () => {
-  const products = [
-    {
-      id: 1,
-      name: 'Ionizer',
-      heading: 'Best ionizer in market',
-      realPrice: 3000,
-      salePrice: 1000,
-      brand: 'cg',
-      category: 'alkalineWater',
-      photo: '/images/1.png',
-      ratingImg: '/images/rating.png',
-    },
-    {
-      id: 2,
-      name: 'Ionizer',
-      heading: 'Best ionizer in market',
-      realPrice: 1043,
-      salePrice: 8333,
-      brand: 'himstar',
-      category: 'alkalineFilter',
-      photo: '/images/312.png',
-      ratingImg: '/images/rating.png',
-    },
-    {
-      id: 3,
-      name: 'Laptop',
-      heading: 'Best ionizer in market',
-      realPrice: 5043,
-      salePrice: 933,
-      brand: 'euroguard',
-      category: 'ionizer',
-      photo: '/images/12312.png',
-      ratingImg: '/images/rating.png',
-    },
-    {
-      id: 4,
-      name: 'Desktop',
-      heading: 'Best ionizer in market',
-      realPrice: 1943,
-      salePrice: 9333,
-      brand: 'euroguard',
-      category: 'airpurifier',
-      photo: '/images/1.png',
-      ratingImg: '/images/rating.png',
-    },
-    {
-      id: 5,
-      name: 'Phone',
-      heading: 'Best ionizer in market',
-      realPrice: 8943,
-      salePrice: 5033,
-      brand: 'euroguard',
-      category: 'airpurifier',
-      photo: '/images/1.png',
-      ratingImg: '/images/rating.png',
-    },
-  ];
-
   const [productBrand, setProductBrand] = useState('');
   const [productCategory, setProductCategory] = useState('');
-  const [productPriceRange, setProductPriceRange] = useState(10000);
+  const [productPriceRange, setProductPriceRange] = useState(200000);
   const [productSort, setProductSort] = useState('');
-  const productId = useParams();
-  console.log(productId)
+  const [products, setProducts] = useState([]);
+  const [loadingSkeleton, setLoadingSkeleton] = useState(true); // Initially set to true
 
-  // Filter data based on brand, category, and price range
+  // Fetch all products
+  const getAllProducts = async () => {
+    try {
+      const response = await axios.get(`${import.meta.env.VITE_REACT_APP_URL}/api/v1/product/getAllProduct`);
+      if (response.data.success) {
+        setProducts(response.data.getAllProducts);
+        setLoadingSkeleton(false); // Set loading to false after products are fetched
+      }
+    } catch (error) {
+      if (error.response) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error('Something went wrong');
+      }
+    }
+  };
+
+  useEffect(() => {
+    getAllProducts();
+  }, []);
+
+  // Filter products based on brand, category, and price range
   const filterData = products.filter((fData) => (
     (productBrand === '' || fData.brand.toLowerCase() === productBrand.toLowerCase()) &&
-    (productCategory === '' || fData.category.toLowerCase() === productCategory.toLowerCase()) &&
-    (fData.salePrice <= productPriceRange)
+    (productCategory === '' || fData.category._id === productCategory) &&
+    (parseInt(fData.salePrice) <= parseInt(productPriceRange))
   )).sort((a, b) => {
     if (productSort === 'lth') {
-      return a.salePrice - b.salePrice;
+      return parseInt(a.salePrice) - parseInt(b.salePrice);
     }
     if (productSort === 'htl') {
-      return b.salePrice - a.salePrice;
+      return parseInt(b.salePrice) - parseInt(a.salePrice);
     }
     return 0;
   });
+
+  // Calculate number of skeletons to show based on filtered products
+  const skeletonCount = filterData.length > 0 ? filterData.length : 3; // Show at least 3 skeletons
 
   return (
     <>
@@ -267,76 +64,74 @@ const Products = () => {
                   <select value={productBrand} onChange={(e) => setProductBrand(e.target.value)}>
                     <option value="">All Brand</option>
                     <option value="cg">CG</option>
-                    <option value="himstar">Himstar</option>
-                    <option value="euroguard">Euroguard</option>
-                    <option value="kent">Kent</option>
+                    <option value="macbook">macbook</option>
+                    <option value="oneplus">onePlus</option>
                   </select>
                 </div>
 
                 <div className="categoryFilterSection">
                   <select value={productCategory} onChange={(e) => setProductCategory(e.target.value)}>
-                    <option value="">All</option>
-                    <option value="ionizer">Ionizer</option>
-                    <option value="airpurifier">Air Purifier</option>
-                    <option value="alkalineWater">Alkaline Water</option>
-                    <option value="alkalineFilter">Alkaline Filter</option>
+                    <option value=''>All</option>
+                    {products.map((cData) => (
+                      <option key={cData.category._id} value={cData.category._id}>{cData.category.categoryName}</option>
+                    ))}
                   </select>
                 </div>
 
                 <div className="priceRangeFilterSection">
                   <label>Price Range: {productPriceRange}</label>
-                  <input 
-                    type="range" 
-                    min="1000" 
-                    max="10000" 
-                    step="100" 
-                    value={productPriceRange} 
-                    onChange={(e) => setProductPriceRange(e.target.value)} 
+                  <input
+                    type="range"
+                    min="10000"
+                    max="200000"
+                    step="100"
+                    value={productPriceRange}
+                    onChange={(e) => setProductPriceRange(e.target.value)}
                   />
                 </div>
-
               </div>
             </aside>
 
             <main className='rightProduct'>
-           <div className="sortByContainer">
-           <div>
-             <h2>Products</h2>
-             </div>
+              <div className="sortByContainer">
+                <div>
+                  <h2>Products</h2>
+                </div>
 
-           <div className="sortFilterSection">
+                <div className="sortFilterSection">
                   <select value={productSort} onChange={(e) => setProductSort(e.target.value)}>
                     <option value="">Sort By</option>
                     <option value="htl">High to Low Price</option>
                     <option value="lth">Low to High Price</option>
                   </select>
                 </div>
+              </div>
 
-             
-           </div>
-              
               <div className="allProducts">
-                {
-                  filterData.length > 0 ? (
-                    filterData.map((product) => (
-                      <Link className='link' key={product.id} to={`/products-details/${product.id}`}>
-                        <div className='productChildContainer'>
-                          <img className='productImg' src={product.photo} alt={product.name} />
-                          <p className='productName'>{product.name}</p>
-                          <p className='productHeading'>{product.heading}</p>
-                          <div className="priceContainer">
-                            <h4 className='salePrice'>Rs {product.salePrice}</h4>
-                            <h4 className='realPrice'>Rs {product.realPrice}</h4>
-                          </div>
-                          <img className='ratingImg' src={product.ratingImg} alt="Rating" />
-                          <h4 className='productBrand'>{product.brand}</h4>
+                {loadingSkeleton ? (
+                  Array.from({ length: skeletonCount }, (_, index) => (
+                    <CardSkeleton key={index} />
+                  ))
+                ) : filterData.length > 0 ? (
+                  filterData.map((product) => (
+                    <Link className='link' key={product._id} to={`/products-details/${product._id}`}>
+                      <div className='productChildContainer'>
+                        <img className='productImg' src={product.images[0]} alt={product.name} />
+                        <p className='productName'>
+                          {product.name.length > 20 ? `${product.name.slice(0, 20)}...` : product.name}
+                        </p>
+                        <p className='productHeading'>{product.heading}</p>
+                        <div className="priceContainer">
+                          <h4 className='salePrice'>Rs {product.salePrice}</h4>
+                          <h4 className='realPrice'>Rs {product.realPrice}</h4>
                         </div>
-                      </Link>
-                    ))
-                  ) : (
-                    <h2>Oops! No products found for the selected brand, category, and price range.</h2>
-                  )
-                }
+                        <h4 className='productBrand'>{product.brand}</h4>
+                      </div>
+                    </Link>
+                  ))
+                ) : (
+                  <h2>Oops! No products found for the selected brand, category, and price range.</h2>
+                )}
               </div>
             </main>
           </div>
@@ -347,4 +142,3 @@ const Products = () => {
 };
 
 export default Products;
-
