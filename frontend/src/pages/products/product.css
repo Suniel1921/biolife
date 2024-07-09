@@ -74,6 +74,9 @@
     display: flex;
     gap: 12px;
   }
+  .priceContainer h4{
+    font-size: 17px;
+  }
 
 
 

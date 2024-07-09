@@ -1,4 +1,5 @@
 const upload = require("../config/multerConfig");
+const categoryModel = require("../models/categoryModel");
 const productModel = require("../models/productModel");
 const cloudinary = require('cloudinary').v2;
 
@@ -144,3 +145,30 @@ exports.deleteProduct = async (req, res)=>{
 }
 
 
+
+
+
+
+
+
+
+
+// Assuming you have a route handler or a function to get related products based on category name
+exports.getRelatedProducts = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        // Retrieve products that belong to the category of the main product
+        const relatedProducts = await productModel.find({ category: id });
+
+        if (relatedProducts.length === 0) {
+            return res.status(404).json({ success: false, message: 'No related products found' });
+        }
+
+        return res.status(200).json({ success: true, message: 'Related products found', relatedProducts });
+        
+    } catch (error) {
+        console.error('Error fetching related products:', error);
+        return res.status(500).json({ success: false, message: `Internal server error: ${error.message}` });
+    }
+};
