@@ -5,14 +5,13 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import CardSkeleton from '../../components/cardSkeleton/CardSkeleton';
 
-
 const Products = () => {
   const [productBrand, setProductBrand] = useState('');
   const [productCategory, setProductCategory] = useState('');
   const [productPriceRange, setProductPriceRange] = useState(200000);
   const [productSort, setProductSort] = useState('');
   const [products, setProducts] = useState([]);
-  const [loadingSkeleton, setLoadingSkeleton] = useState(true); // Initially set to true
+  const [loadingSkeleton, setLoadingSkeleton] = useState(true); 
 
   // Fetch all products
   const getAllProducts = async () => {
@@ -20,7 +19,7 @@ const Products = () => {
       const response = await axios.get(`${import.meta.env.VITE_REACT_APP_URL}/api/v1/product/getAllProduct`);
       if (response.data.success) {
         setProducts(response.data.getAllProducts);
-        setLoadingSkeleton(false); // Set loading to false after products are fetched
+        setLoadingSkeleton(false); 
       }
     } catch (error) {
       if (error.response) {
@@ -49,9 +48,6 @@ const Products = () => {
     }
     return 0;
   });
-
-  // Calculate number of skeletons to show based on filtered products
-  const skeletonCount = filterData.length > 0 ? filterData.length : 3; // Show at least 3 skeletons
 
   return (
     <>
@@ -108,30 +104,32 @@ const Products = () => {
               </div>
 
               <div className="allProducts">
-                {loadingSkeleton ? (
-                  Array.from({ length: skeletonCount }, (_, index) => (
-                    <CardSkeleton key={index} />
-                  ))
-                ) : filterData.length > 0 ? (
-                  filterData.map((product) => (
-                    <Link className='link' key={product._id} to={`/products-details/${product._id}`}>
-                      <div className='productChildContainer'>
-                        <img className='productImg' src={product.images[0]} alt={product.name} />
-                        <p className='productName'>
-                          {product.name.length > 20 ? `${product.name.slice(0, 20)}...` : product.name}
-                        </p>
-                        <p className='productHeading'>{product.heading}</p>
-                        <div className="priceContainer">
-                          <h4 className='salePrice'>Rs {product.salePrice}</h4>
-                          <h4 className='realPrice'>Rs {product.realPrice}</h4>
-                        </div>
-                        <h4 className='productBrand'>{product.brand}</h4>
-                      </div>
-                    </Link>
-                  ))
-                ) : (
-                  <h2>Oops! No products found for the selected brand, category, and price range.</h2>
-                )}
+                {
+                  loadingSkeleton ? (
+                    <CardSkeleton />
+                  ) : (
+                    filterData.length > 0 ? (
+                      filterData.map((product) => (
+                        <Link className='link' key={product._id} to={`/products-details/${product._id}`}>
+                          <div className='productChildContainer'>
+                            <img className='productImg' src={product.images[0]} alt={product.name} />
+                            <p className='productName'>
+                              {product.name.length > 20 ? `${product.name.slice(0, 20)}...` : product.name}
+                            </p>
+                            <p className='productHeading'>{product.heading}</p>
+                            <div className="priceContainer">
+                              <h4 className='salePrice'>Rs {product.salePrice}</h4>
+                              <h4 className='realPrice'>Rs {product.realPrice}</h4>
+                            </div>
+                            <h4 className='productBrand'>{product.brand}</h4>
+                          </div>
+                        </Link>
+                      ))
+                    ) : (
+                      <h2>Oops! No products found for the selected brand, category, and price range.</h2>
+                    )
+                  )
+                }
               </div>
             </main>
           </div>

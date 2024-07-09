@@ -7,13 +7,15 @@ const Home = () => {
   return (
     <>
     <div className="homeContainer">
-      <div className="container">
+     
       <div className="home"> <HomeSlider/> </div>
+      <div className="container">
       <DealOfTheDay/>
       <BestSeller/>
-
       </div>
-          
+     
+
+
     </div>
       
     </>
