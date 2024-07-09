@@ -34,6 +34,9 @@ const Products = () => {
     getAllProducts();
   }, []);
 
+  // Extract unique categories
+  const uniqueCategories = [...new Map(products.map(item => [item.category._id, item.category])).values()];
+
   // Filter products based on brand, category, and price range
   const filterData = products.filter((fData) => (
     (productBrand === '' || fData.brand.toLowerCase() === productBrand.toLowerCase()) &&
@@ -68,8 +71,8 @@ const Products = () => {
                 <div className="categoryFilterSection">
                   <select value={productCategory} onChange={(e) => setProductCategory(e.target.value)}>
                     <option value=''>All</option>
-                    {products.map((cData) => (
-                      <option key={cData.category._id} value={cData.category._id}>{cData.category.categoryName}</option>
+                    {uniqueCategories.map((cData) => (
+                      <option key={cData._id} value={cData._id}>{cData.categoryName}</option>
                     ))}
                   </select>
                 </div>
@@ -140,3 +143,6 @@ const Products = () => {
 };
 
 export default Products;
+
+
+
