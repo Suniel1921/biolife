@@ -1,17 +1,22 @@
-.sellerHeading{
+.bestSellerContainer{
+    margin-top: 34px;
+
+}
+
+.filterContainer{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
 
-.categoryContainer{
+.filterHeading h3{
+    font-size: 30px;
+}
+
+.categoryFilter{
     display: flex;
-    gap: 2rem;
     justify-content: center;
     align-items: center;
+    gap: 2rem;
     cursor: pointer;
-}
-
-.heading{
-    font-size: 2rem;
 }
