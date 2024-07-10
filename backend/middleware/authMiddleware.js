@@ -22,6 +22,26 @@ exports.requireLogin = async (req, res, next)=>{
 
 
 
+
+
+// *********************ISADMIN*******************************
+exports.isAdmin = async (req, res, next)=>{
+    try {
+        const user = await authModel.findById(req.user._id);
+        if (!user || user.role !== 1){
+            return res.status(401).send({success: false, message: "You do not have permission to access this resource."})
+        }
+        else{
+            next()
+        }
+        
+    } catch (error) {
+        return res.status(401).send({success: false, message: "Unauthorized Access. Please log in and try again!"})
+        
+    }
+}
+
+
 exports.isAdmin = async (req, res, next) => {
     try {
         const user = await userAuthModel.findById(req.user._id);
