@@ -5,6 +5,7 @@ dotenv.config();
 const port = process.env.PORT || 5000;
 const cors = require ("cors");
 const DBConnection = require('./config/DBConnection');
+const authRoute = require ('./routes/authRoute');
 const categoryRoute = require ('./routes/categoryRoute');
 const productRoute = require ('./routes/productRoute');
 
@@ -18,6 +19,7 @@ app.use(cors());
 DBConnection();
 
 //route
+app.use('/api/v1/auth', authRoute);
 app.use('/api/v1/category', categoryRoute);
 app.use('/api/v1/product', productRoute);
 
