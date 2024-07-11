@@ -50,11 +50,11 @@ const Cart = () => {
                         <h3>Summary</h3>
                         <div className="summaryDetails">
                             <p>ITEMS {cart.length}</p>
-                            <p>Rs {Number(totalPrice.toFixed(2))}</p>
+                            <p>Total: Rs {Number(totalPrice.toFixed(2))}</p>
                             <label>SHIPPING</label>
                             <select>
-                                <option>Standard-Delivery - Rs 80.00</option>
-                                <option>Next-Day Delivery - Rs 120.00</option>
+                                <option>Cash On Delevery</option>
+                                {/* <option>Khalti</option> */}
                             </select>
                             <button className="checkoutBtn" onClick={handleCheckout}>PROCEED TO CHECKOUT</button>
                         </div>

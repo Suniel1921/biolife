@@ -38,7 +38,7 @@ const TrendingProduct = () => {
     <div className="trendingProduct">
       <div className="container">
         <div className="trendingProductContainer">
-          <h3 className='trendingHeading'>Trending Products</h3>
+          <h2 className='trendingHeading'>Trending Products</h2>
           <div className="trendingCard">
             {products.map((tProduct) => (
               <Link className='link' key={tProduct._id} to={`/products-details/${tProduct._id}`}>
