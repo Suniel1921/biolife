@@ -124,6 +124,7 @@ const Products = () => {
                               <h4 className='salePrice'>Rs {product.salePrice}</h4>
                               <h4 className='realPrice'>Rs {product.realPrice}</h4>
                             </div>
+                            <div className="product-rating"> <span>⭐⭐⭐⭐⭐</span></div>
                             <h4 className='productBrand'>{product.brand}</h4>
                           </div>
                         </Link>

@@ -47,6 +47,7 @@ const TrendingProduct = () => {
                 <div className='tredingCardDetails'>
                   <p>{tProduct.category.categoryName}</p>
                   <h4>{tProduct.name.slice(0,25)}</h4>
+                  <div className="product-rating"> <span>⭐⭐⭐⭐⭐</span></div>
                   <div className='trendingPrice'>
                     <p>Rs {tProduct.salePrice}</p>
                     {tProduct.realPrice && <p className="original-price">Rs {tProduct.realPrice}</p>}

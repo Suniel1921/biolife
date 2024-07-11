@@ -90,6 +90,7 @@ const BestSeller = () => {
                           {product.name.length > 20 ? `${product.name.slice(0, 20)}...` : product.name}
                         </p>
                         <p className='productHeading'>{product.heading}</p>
+                        <div className="product-rating"> <span>⭐⭐⭐⭐⭐</span></div>
                         <div className="priceContainer">
                           <h4 className='salePrice'>Rs {product.salePrice}</h4>
                           <h4 className='realPrice'>Rs {product.realPrice}</h4>

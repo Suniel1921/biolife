@@ -29,6 +29,10 @@
     list-style-type: none;
     text-decoration: none;
 }
+.product-rating span{
+    font-size: 10px;
+   }
+   
 
 
 /* .active{
