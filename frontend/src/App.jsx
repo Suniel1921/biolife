@@ -11,6 +11,7 @@ import Login from './components/auth/login/Login';
 import ProtectedRoute from './components/protectedRoute/ProtectedRoute';
 import Cart from './pages/cart/Cart';
 import Checkout from './pages/cart/Checkout';
+import Footer from './components/footer/Footer';
 
 
 const App = () => {
@@ -34,6 +35,7 @@ const App = () => {
 
         </Routes>
         <Toaster />
+        <Footer/>
     </Router>
     </>
   )
