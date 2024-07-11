@@ -7,11 +7,9 @@ import Specification from './specification/Specification';
 
 import toast from 'react-hot-toast';
 import { useCartGlobally } from '../../context/CartContext';
-// import { useCart } from '../../context/CartContext';
 
 const ProductDetails = () => {
     const { id } = useParams();
-    // const { addToCart } = useCart();
     const {addToCart} = useCartGlobally();
     const [product, setProduct] = useState(null);
     const [mainImage, setMainImage] = useState('');

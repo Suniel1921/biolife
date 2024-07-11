@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import '../deal_of_the_Day/dealOfTheDay.css';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
+import { useCartGlobally } from '../../context/CartContext';
 
 const DealOfTheDay = () => {
     const [products, setProducts] = useState([]);
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [selectedImage, setSelectedImage] = useState('');
+    const {addToCart} = useCartGlobally();
     
     // Timer
     const calculateTimeLeft = () => {
@@ -67,6 +69,13 @@ const DealOfTheDay = () => {
     useEffect(() => {
         getAllProducts();
     }, []);
+
+    const handleAddToCart = () => {
+        addToCart(selectedProduct);
+        toast.success('Item added to cart');
+    };
+
+
 
     const handleImageClick = (image) => {
         setSelectedImage(image);
@@ -130,7 +139,7 @@ const DealOfTheDay = () => {
                         <p className="product-features">
                             Fast charging 18W, 50% in 30 min USB Power Delivery 2.0 nQi wireless charging
                         </p>
-                        <button className="add-to-cart-button">ADD TO CART</button>
+                        <button className='add-to-cart-button' onClick={handleAddToCart}>Add to Cart</button>
                     </div>
                 </div>
             </div>

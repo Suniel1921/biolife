@@ -10,6 +10,7 @@ import Register from './components/auth/register/Register';
 import Login from './components/auth/login/Login';
 import ProtectedRoute from './components/protectedRoute/ProtectedRoute';
 import Cart from './pages/cart/Cart';
+import Checkout from './pages/cart/Checkout';
 
 
 const App = () => {
@@ -25,9 +26,10 @@ const App = () => {
             <Route path='/products' element={<Products />} />
             <Route path='/register' element={<Register />} />
             <Route path='/login' element={<Login />} />
+                <Route path='/cart' element={<Cart />} />
             {/* protected route */}
             <Route element={<ProtectedRoute />}>    
-                <Route path='/cart' element={<Cart />} />
+            <Route path='/checkout' element={<Checkout/>}/>
             </Route>
 
         </Routes>
