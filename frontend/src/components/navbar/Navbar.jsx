@@ -37,9 +37,12 @@ import '../navbar/navbar.css';
 import { useAuthGlobally } from '../../context/AuthContext';
 import toast from 'react-hot-toast';
 import axios from 'axios';
+import { useCartGlobally } from '../../context/CartContext';
 
 const Navbar = () => {
   const [auth, setAuth] = useAuthGlobally();
+ const {cart} = useCartGlobally();
+
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -64,7 +67,7 @@ const Navbar = () => {
             <li><NavLink to="/">Home</NavLink></li>
             <li><NavLink to="/products">Products</NavLink></li>
             <li><NavLink to="/contact">Contact</NavLink></li>
-            <li><NavLink to="/cart">Cart</NavLink></li>
+            <li><NavLink to="/cart">Cart{cart.length}</NavLink></li>
             {
               auth?.user ? (
                 <div className="navbar-user">
