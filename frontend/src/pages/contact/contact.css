@@ -1,84 +1,87 @@
-/* .contactContainer{
+.contact{
+    margin-top: 34px;
+    margin-bottom: 34px;
+}
+
+
+.contactContainer{
     display: flex;
     justify-content: space-around;
-    gap: 2rem;
+    align-items: center;
 }
 
-.leftContact{
-    width: 50%;
-}
-.rightContact{
+.contactLeft{
     width: 50%;
 }
 
-.contactCardContainer{
+.leftContact p{
+    margin-bottom: 13px;
+    color: var(--darkTextColor);
+}
+
+
+.contactRight{
+    width: 50%;
+}
+
+.contactCard{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px;
 }
-.contactCard3{
+
+.childCard{
+    padding: 34px
+}
+
+
+.phoneCard{
+    background-color: #d3efff;
+    width: 300px;
+    height: 30vh;
+}
+.emailCard{
+    background-color: #e7f2ec;
+}
+
+.addressCard{
+    background-color: #ffeae5;
     grid-column: span 2;
-    
+    height: 60vh;
 }
 
-.contactCard1{
-    background-color: red;
-}
-.contactCard2{
-    background-color:green;
-}
-.contactCard3{
-    background-color: blue;
-}
-
-
-.contact-form {
-    margin: 0 auto;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    background-color: #fff;
-}
-
-.contact-form h2 {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.form-group input,
-.form-group textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-
-textarea {
-    height: 100px;
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    background-color:var(--secondaryBlueColor);
-    color: #fff;
+.map{
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-} */
+    width: 550px;
+    height: 300px;
+}
 
+.contactForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
+}
 
-/* important note : change call name other wise product details not working well (description and specificaiotn) */
-/* if you uncomment the code  */
+.contactForm input,textarea{
+   padding: 12px;
+   width: 445px;
+   height: 45px;
+    margin: 23px;
+    border-radius: 4px;
+    border: 1px solid var(--secondaryBlueColor);
+    outline: none;
+
+}
+
+.contactBtn{
+    width: 445px;
+    height: 45px;
+    margin-bottom: 34px;
+    border: none;
+    background-color: var(--secondaryBlueColor); ;
+    color: var(--whiteColor);
+    border-radius: 4px;
+}
