@@ -24,12 +24,6 @@
     color: black;
 }
 
-
-
-
-
-
-
 .user-initial {
     width: 40px;
     height: 40px;
@@ -43,3 +37,26 @@
     font-size: 1.25rem;
     font-weight: bold;
 }
+
+
+.hamburgerMenu{
+    display: none;
+    font-size: 33px;
+}
+
+
+
+
+
+/* media queries start from here */
+
+@media screen and (max-width: 850px) {
+    .navlinks{
+        display: none;
+    }
+    .hamburgerMenu{
+        display: block;
+    }
+    
+}
+
