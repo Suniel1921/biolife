@@ -171,7 +171,17 @@
 
 
 
+/* media quereis start from here */
 
-
-
-
+@media screen and (max-width: 850px) {
+    .deal-of-the-day{
+        flex-direction: column;
+    }
+    .deal-info {
+        width: 100%;
+    }
+    .deal-product {
+        width: 100%;
+    }
+    
+}

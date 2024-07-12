@@ -10,14 +10,16 @@ const Home = () => {
     <>
     <div className="homeContainer">
      
-      <div className="home"> <HomeSlider/> </div>
-      <div className="container">
-      <DealOfTheDay/>
+      <div className="home"> 
+        <HomeSlider/> 
+        <DealOfTheDay/>
       <BestSeller/>
       <Banner/>
-      </div>
       <TrendingProduct/>
      
+      </div>
+
+    
 
 
     </div>

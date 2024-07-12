@@ -21,7 +21,7 @@
 .container{
     width: 1150px;
     margin: auto;
-    overflow: hidden;
+    /* overflow: hidden; */
         
 }
 

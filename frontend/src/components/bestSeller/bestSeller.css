@@ -20,3 +20,26 @@
     gap: 2rem;
     cursor: pointer;
 }
+
+
+/* media queries start from here */
+/* @media screen and (max-width: 850px) {
+    .allProducts{
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+    
+}
+@media screen and (max-width: 600px) {
+    .allProducts{
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    
+}
+@media screen and (max-width: 400px) {
+    .allProducts{
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
+    
+}
+ */
+
