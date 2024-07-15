@@ -20,7 +20,9 @@ const ProductDetails = () => {
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                const response = await axios.get(`http://localhost:4000/api/v1/product/getSingleProduct/${id}`);
+                // const response = await axios.get(`http://localhost:4000/api/v1/product/getSingleProduct/${id}`);
+                const response = await axios.post(`${import.meta.env.VITE_REACT_APP_URL}/api/v1/product/getSingleProduct/${id}`);
+
                 const fetchedProduct = response.data.singleProduct;
                 setProduct(fetchedProduct);
 
@@ -29,7 +31,8 @@ const ProductDetails = () => {
                     setActiveThumbnail(fetchedProduct.images[0]);
                 }
 
-                const relatedResponse = await axios.get(`http://localhost:4000/api/v1/product/relatedProducts/${fetchedProduct.category}`);
+                // const relatedResponse = await axios.get(`http://localhost:4000/api/v1/product/relatedProducts/${fetchedProduct.category}`);
+                const relatedResponse = await axios.post(`${import.meta.env.VITE_REACT_APP_URL}/api/v1/product/relatedProducts/${fetchedProduct.category}`);
                 const fetchedRelatedProducts = relatedResponse.data.relatedProducts;
                 setRelatedProducts(fetchedRelatedProducts);
             } catch (error) {
