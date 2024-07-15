@@ -6,11 +6,12 @@ import toast from 'react-hot-toast';
 import axios from 'axios';
 import { useCartGlobally } from '../../context/CartContext';
 import { GiHamburgerMenu } from "react-icons/gi";
+import { Badge, IconButton } from '@mui/material';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const Navbar = () => {
   const [auth, setAuth] = useAuthGlobally();
- const {cart} = useCartGlobally();
-
+  const { cart } = useCartGlobally();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -35,18 +36,21 @@ const Navbar = () => {
             <li><NavLink to="/">Home</NavLink></li>
             <li><NavLink to="/products">Products</NavLink></li>
             <li><NavLink to="/contact">Contact</NavLink></li>
-            <li><NavLink to="/cart">Cart{cart.length}</NavLink></li>
+            <li>
+              <NavLink to="/cart">
+                <Badge badgeContent={cart.length} color="error">
+                  <ShoppingCartIcon />
+                </Badge>
+              </NavLink>
+            </li>
             {
               auth?.user ? (
                 <div className="navbar-user">
-                  {/* <div className="user-initial">{auth.user.name.charAt(0).toUpperCase()}</div> */}
                   <li onClick={handleLogout}><NavLink to="#">Logout</NavLink></li>
                 </div>
               ) : (
                 <>
                   <li><NavLink to="/login">Login</NavLink></li>
-                  {/* <li><NavLink to="/register">Register</NavLink></li> */}
-               
                 </>
               )
             }
@@ -59,6 +63,3 @@ const Navbar = () => {
 }
 
 export default Navbar;
-
-
-

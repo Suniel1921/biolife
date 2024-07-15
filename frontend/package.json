@@ -12,7 +12,9 @@
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
-    "@mui/material": "^5.15.21",
+    "@mui/icons-material": "^5.16.1",
+    "@mui/material": "^5.16.1",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.18",
     "axios": "^1.7.2",
     "formik": "^2.4.6",
     "gsap": "^3.12.5",
@@ -25,6 +27,7 @@
     "react-router-dom": "^6.24.0",
     "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1",
+    "styled-components": "^6.1.11",
     "swiper": "^11.1.4",
     "yup": "^1.4.0"
   },
