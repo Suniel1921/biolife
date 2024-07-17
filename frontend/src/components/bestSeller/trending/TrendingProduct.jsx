@@ -45,7 +45,7 @@ const TrendingProduct = () => {
               <div key={tProduct.id} className="cardContainer">
                 <img className='trendingImg' src={tProduct.images[0]} alt={tProduct.name} />
                 <div className='tredingCardDetails'>
-                  <p>{tProduct.category.categoryName}</p>
+                  <p>{tProduct?.category?.categoryName}</p>
                   <h4>{tProduct.name.slice(0,25)}</h4>
                   <div className="product-rating"> <span>⭐⭐⭐⭐⭐</span></div>
                   <div className='trendingPrice'>

@@ -12,6 +12,13 @@ import ProtectedRoute from './components/protectedRoute/ProtectedRoute';
 import Cart from './pages/cart/Cart';
 import Checkout from './pages/cart/Checkout';
 import Footer from './components/footer/Footer';
+import AdminDashboard from './components/admin/dashboard/AdminDashboard';
+import AdminRoute from './components/admin/adminProtectedRoute/AdminProtectedRoute';
+import CreateCategory from './components/admin/dashboardMainContent/category/CreateCategory';
+
+
+
+
 
 
 const App = () => {
@@ -27,11 +34,20 @@ const App = () => {
             <Route path='/products' element={<Products />} />
             <Route path='/register' element={<Register />} />
             <Route path='/login' element={<Login />} />
-                <Route path='/cart' element={<Cart />} />
+            <Route path='/cart' element={<Cart />} />
+            {/* <Route path='/sunil' element={<AdminRoute/>} /> */}
+
             {/* protected route */}
             <Route element={<ProtectedRoute />}>    
             <Route path='/checkout' element={<Checkout/>}/>
             </Route>
+
+            {/* admin protected route */}
+            <Route path='/dashboard' element={<AdminRoute/>}>
+            <Route path='admin' element={<AdminDashboard/>}/>
+            <Route path='admin/createCategory' element={<CreateCategory/>}/>
+            </Route>
+           
 
         </Routes>
         <Toaster />

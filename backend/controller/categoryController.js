@@ -8,13 +8,13 @@ exports.createCategory = async (req, res) => {
 
         // Validation
         if (!categoryName) {
-            return res.status(400).json({ success: false, message: 'Name is required' });
+            return res.status(400).json({ success: false, message: 'categoryName is required' });
         }
 
         // Check if category name exists or not
         const checkName = await categoryModel.findOne({ categoryName });
         if (checkName) {
-            return res.status(400).json({ success: false, message: 'Category name already exists' });
+            return res.status(400).json({ success: false, message: 'Category name already exist' });
         }
 
         // Save/create new category name in db
@@ -31,7 +31,7 @@ exports.createCategory = async (req, res) => {
 exports.getAllCategory = async (req ,res)=>{
     try {
         const allCategory = await categoryModel.find();
-        if(allCategory.length < 0){
+        if (allCategory.length === 0) {
             return res.status(404).json({success: false, message: 'Category Not Found !'});
         }
         return res.status(200).json({success: true, message: 'All category found', allCategory});
@@ -59,28 +59,32 @@ exports.deleteCategory = async (req, res)=>{
     }
 }
 
-//update category
+// Update Category
 exports.updateCategory = async (req, res) => {
     try {
-        const { name } = req.body;
+        const { categoryName } = req.body;
         const { id } = req.params;
 
         // Validation
-        if (!name) {
-            return res.status(400).json({ success: false, message: 'Name is required' });
+        if (!categoryName) {
+            return res.status(400).json({ success: false, message: 'categoryName is required' });
+        }
+
+        // Check if category name already exists
+        const existingCategory = await categoryModel.findOne({ categoryName });
+        if (existingCategory && existingCategory._id.toString() !== id) {
+            return res.status(400).json({ success: false, message: 'Category name already exist' });
         }
 
         // Update category
-        const updateCategory = await categoryModel.findByIdAndUpdate(id, { name }, { new: true });
-        if (!updateCategory) {
+        const updatedCategory = await categoryModel.findByIdAndUpdate(id, { categoryName }, { new: true });
+        if (!updatedCategory) {
             return res.status(404).json({ success: false, message: 'Category Not Found' });
         }
 
-        return res.status(200).json({ success: true, message: 'Category Updated Successfully', updateCategory });
+        return res.status(200).json({ success: true, message: 'Category Updated Successfully', updatedCategory });
         
     } catch (error) {
         return res.status(500).json({ success: false, message: `Internal server error: ${error.message}` });
     }
-}
-
-
+};
