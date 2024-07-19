@@ -8,7 +8,7 @@ const DealOfTheDay = () => {
     const [products, setProducts] = useState([]);
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [selectedImage, setSelectedImage] = useState('');
-    const {addToCart} = useCartGlobally();
+    const { addToCart } = useCartGlobally();
     
     // Timer
     const calculateTimeLeft = () => {
@@ -75,8 +75,6 @@ const DealOfTheDay = () => {
         toast.success('Item added to cart');
     };
 
-
-
     const handleImageClick = (image) => {
         setSelectedImage(image);
     };
@@ -127,7 +125,7 @@ const DealOfTheDay = () => {
                         <img className="product-main-image" src={selectedImage} alt="Main Product" />
                     </div>
                     <div className="product-info">
-                        <h3 className="product-brand">{selectedProduct.brand}</h3>
+                        <h3 className="product-brand">{selectedProduct.brand.brandName}</h3>
                         <h2 className="product-title">{selectedProduct.name}</h2>
                         <div className="product-rating">
                             <span>⭐⭐⭐⭐⭐</span>

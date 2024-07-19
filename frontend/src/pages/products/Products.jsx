@@ -17,6 +17,7 @@ const Products = () => {
   const getAllProducts = async () => {
     try {
       const response = await axios.get(`${import.meta.env.VITE_REACT_APP_URL}/api/v1/product/getAllProduct`);
+      console.log(response)
       if (response.data.success) {
         setProducts(response.data.getAllProducts);
         setLoadingSkeleton(false); 
@@ -37,9 +38,12 @@ const Products = () => {
   // Extract unique categories
   const uniqueCategories = [...new Map(products.map(item => [item.category._id, item.category])).values()];
 
+  // Extract unique brands
+  const uniqueBrands = [...new Map(products.map(item => [item.brand._id, item.brand])).values()];
+
   // Filter products based on brand, category, and price range
   const filterData = products.filter((fData) => (
-    (productBrand === '' || fData.brand.toLowerCase() === productBrand.toLowerCase()) &&
+    (productBrand === '' || fData.brand._id === productBrand) &&
     (productCategory === '' || fData.category._id === productCategory) &&
     (parseInt(fData.salePrice) <= parseInt(productPriceRange))
   )).sort((a, b) => {
@@ -62,9 +66,9 @@ const Products = () => {
                 <div className="brandFilterSection">
                   <select value={productBrand} onChange={(e) => setProductBrand(e.target.value)}>
                     <option value="">All Brand</option>
-                    <option value="cg">CG</option>
-                    <option value="macbook">macbook</option>
-                    <option value="oneplus">onePlus</option>
+                    {uniqueBrands.map((pBrand) => (
+                      <option key={pBrand._id} value={pBrand._id}>{pBrand.brandName}</option>
+                    ))}
                   </select>
                 </div>
 
@@ -75,7 +79,7 @@ const Products = () => {
                       <option key={cData._id} value={cData._id}>{cData.categoryName}</option>
                     ))}
                   </select>
-                </div>
+                </div> 
 
                 <div className="priceRangeFilterSection">
                   <label>Price Range: {productPriceRange}</label>
@@ -125,7 +129,7 @@ const Products = () => {
                               <h4 className='realPrice'>Rs {product.realPrice}</h4>
                             </div>
                             <div className="product-rating"> <span>⭐⭐⭐⭐⭐</span></div>
-                            <h4 className='productBrand'>{product.brand}</h4>
+                            <h4 className='productBrand'>{product.brand.brandName}</h4>
                           </div>
                         </Link>
                       ))
@@ -144,6 +148,3 @@ const Products = () => {
 };
 
 export default Products;
-
-
-

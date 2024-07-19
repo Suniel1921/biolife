@@ -28,7 +28,10 @@ const SideMenu = () => {
             <span className="dropdownTitle">Ecommerce</span>
           </h3>
           <div className={`dropdownContent ${dropdowns.ecommerce ? 'open' : ''}`}>
+            <Link className='link' to={'/dashboard/admin/createProduct'}> 
             <p><IoMdArrowDropright className="subItemIcon" /> Add Product</p>
+            </Link>
+           
             <p><IoMdArrowDropright className="subItemIcon" /> Products</p>
             <p><IoMdArrowDropright className="subItemIcon" /> Customers</p>
             <p><IoMdArrowDropright className="subItemIcon" /> Orders</p>
@@ -45,6 +48,11 @@ const SideMenu = () => {
             <Link className='link' to='/dashboard/admin/createCategory'>
               <p className="subItemLink">
                 <IoMdArrowDropright className="subItemIcon" /> Add Category
+              </p>
+            </Link>
+            <Link className='link' to='/dashboard/admin/createBrand'>
+              <p className="subItemLink">
+                <IoMdArrowDropright className="subItemIcon" /> Add Brand
               </p>
             </Link>
 

@@ -7,6 +7,7 @@ const cors = require ("cors");
 const DBConnection = require('./config/DBConnection');
 const authRoute = require ('./routes/authRoute');
 const categoryRoute = require ('./routes/categoryRoute');
+const brandRoute = require ('./routes/brandRoute');
 const productRoute = require ('./routes/productRoute');
 
 
@@ -21,6 +22,7 @@ DBConnection();
 //route
 app.use('/api/v1/auth', authRoute);
 app.use('/api/v1/category', categoryRoute);
+app.use('/api/v1/brand', brandRoute);
 app.use('/api/v1/product', productRoute);
 
 

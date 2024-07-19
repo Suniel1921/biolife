@@ -21,7 +21,7 @@ const ProductDetails = () => {
         const fetchProduct = async () => {
             try {
                 // const response = await axios.get(`http://localhost:4000/api/v1/product/getSingleProduct/${id}`);
-                const response = await axios.post(`${import.meta.env.VITE_REACT_APP_URL}/api/v1/product/getSingleProduct/${id}`);
+                const response = await axios.get(`${import.meta.env.VITE_REACT_APP_URL}/api/v1/product/getSingleProduct/${id}`);
 
                 const fetchedProduct = response.data.singleProduct;
                 setProduct(fetchedProduct);
@@ -32,7 +32,7 @@ const ProductDetails = () => {
                 }
 
                 // const relatedResponse = await axios.get(`http://localhost:4000/api/v1/product/relatedProducts/${fetchedProduct.category}`);
-                const relatedResponse = await axios.post(`${import.meta.env.VITE_REACT_APP_URL}/api/v1/product/relatedProducts/${fetchedProduct.category}`);
+                const relatedResponse = await axios.get(`${import.meta.env.VITE_REACT_APP_URL}/api/v1/product/relatedProducts/${fetchedProduct.category}`);
                 const fetchedRelatedProducts = relatedResponse.data.relatedProducts;
                 setRelatedProducts(fetchedRelatedProducts);
             } catch (error) {
@@ -74,14 +74,14 @@ const ProductDetails = () => {
                             </div>
                         </div>
                         <div className="productDetailsDataRight">
-                            <p className='productHeading'>{product.name}</p>
-                            <h2>{product.name}</h2>
+                            <h4 className='productHeading'>{product.name}</h4>
+                            <p>{product.description}</p>
                             <div className="priceContainer">
                                 <h4 className='salePrice'>Rs {product.salePrice}</h4>
                                 <h4 className='realPrice'>Rs {product.realPrice}</h4>
                             </div>
                             <h4 className='productBrand'>{product.brand}</h4>
-                            <p className='productDescription'>{product.description}</p>
+                            <p className='productDiscount'>{product.discount}% off</p>
                             <button className='cartBtn' onClick={handleAddToCart}>Add to Cart</button>
                         </div>
                     </div>

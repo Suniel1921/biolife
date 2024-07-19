@@ -4,13 +4,55 @@ const productModel = require("../models/productModel");
 const cloudinary = require('cloudinary').v2;
 
 //create product
+// exports.createProduct = [
+//     upload.array('images', 5), // Accept up to 5 images
+//     async (req, res) => {
+//         try {
+//             const { name, realPrice, salePrice, brand, category } = req.body;
+
+//             if (!name || !realPrice || !salePrice || !brand || !category) {
+//                 return res.status(400).json({ success: false, message: 'All fields are required' });
+//             }
+
+//             // Upload images to Cloudinary and get their URLs
+//             const imageUrls = [];
+//             for (const file of req.files) {
+//                 const result = await cloudinary.uploader.upload(file.path);
+//                 imageUrls.push(result.secure_url);
+//             }
+
+//             // Create product with Cloudinary image URLs
+//             const createProduct = await productModel.create({
+//                 name,
+//                 realPrice,
+//                 salePrice,
+//                 brand,
+//                 category,
+//                 images: imageUrls
+//             });
+
+//             return res.status(201).json({ success: true, message: 'Product Created', createProduct });
+            
+//         } catch (error) {
+//             res.status(500).json({ success: false, message: `Internal server error: ${error}` });
+//         }
+//     }
+// ];
+
+
+
+// Function to generate SKU
+const generateSKU = () => {
+    return `SKU-${Date.now()}-${Math.floor(Math.random() * 10000)}`;
+};
+
 exports.createProduct = [
     upload.array('images', 5), // Accept up to 5 images
     async (req, res) => {
-        try {
-            const { name, realPrice, salePrice, brand, category } = req.body;
+        try { 
+            const { name, description, realPrice, salePrice, brand, category } = req.body;
 
-            if (!name || !realPrice || !salePrice || !brand || !category) {
+            if (!name || !description || !realPrice || !salePrice || !brand || !category) {
                 return res.status(400).json({ success: false, message: 'All fields are required' });
             }
 
@@ -21,18 +63,27 @@ exports.createProduct = [
                 imageUrls.push(result.secure_url);
             }
 
-            // Create product with Cloudinary image URLs
+            // Generate SKU
+            const sku = generateSKU();
+
+            // Calculate discount
+            const discount = ((realPrice - salePrice) / realPrice) * 100;
+
+            // Create product with Cloudinary image URLs and SKU
             const createProduct = await productModel.create({
                 name,
                 realPrice,
                 salePrice,
-                brand,
                 category,
+                sku,
+                discount,
+                brand,
+                description,
                 images: imageUrls
             });
 
             return res.status(201).json({ success: true, message: 'Product Created', createProduct });
-            
+
         } catch (error) {
             res.status(500).json({ success: false, message: `Internal server error: ${error}` });
         }
@@ -43,11 +94,13 @@ exports.createProduct = [
 
 
 
+
+
 //get all products
 
 exports.getAllProducts = async (req, res) => {
     try {
-        const getAllProducts = await productModel.find({}).populate('category');
+        const getAllProducts = await productModel.find({}).populate('category').populate('brand');
         if (getAllProducts.length === 0) {
             return res.status(404).json({ success: false, message: 'No products found' });
         }

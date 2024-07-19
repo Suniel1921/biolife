@@ -95,7 +95,7 @@ const BestSeller = () => {
                           <h4 className='salePrice'>Rs {product.salePrice}</h4>
                           <h4 className='realPrice'>Rs {product.realPrice}</h4>
                         </div>
-                        <h4 className='productBrand'>{product.brand}</h4>
+                        <h4 className='productBrand'>{product.brand.brandName}</h4> {/* Render brandName instead of the whole brand object */}
                       </div>
                     </Link>
                   ))
