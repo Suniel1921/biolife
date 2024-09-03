@@ -48,8 +48,7 @@ const App = () => {
             <Route path='admin/createProduct' element={<CreateProduct/>}/>
             <Route path='admin/createCategory' element={<CreateCategory/>}/>
             <Route path='admin/createBrand' element={<CreateBrand/>}/>
-            </Route>
-           
+            </Route>         
 
         </Routes>
         <Toaster />

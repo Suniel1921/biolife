@@ -5,11 +5,11 @@ import { useFormik } from 'formik';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import "../register/register.css";
-import { useAuthGlobally } from "../../../context/AuthContext";  // Correct import
+import { useAuthGlobally } from "../../../context/AuthContext";  
 
 const Login = () => {
     const navigate = useNavigate();
-    const [auth, setAuth] = useAuthGlobally();  // Correct usage
+    const [auth, setAuth] = useAuthGlobally();  
 
     // Validation schema using yup
     const validationSchema = Yup.object({
